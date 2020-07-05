@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+    </head>
+    <body>
+        <!-- 加载与用户设备相匹配的小图片，既快速，又不会影响用户的体验 -->
+        <!-- 关于图片的加载 --- 响应式图片 -->
+
+        <!-- js控制： -->
+        <div class="content">
+            <img src="" alt="" />
+        </div>
+
+        <!-- 1-img中使用srcset属性，让浏览器自动选择适合的图片 -->
+        <!-- 345w --- 是指图片的宽度，也就是对这个图片大小的一个描述 -->
+        <img
+            src="img/ad001.png"
+            alt="2015年度总结"
+            srcset="
+                img/ad001.png    345w,
+                img/ad001-m.png  690w,
+                img/ad001-l.png 1035w
+            "
+        />
+
+        <!-- 2-通过picture标签，手动浏览器控制在500px以下，显示1倍图；1000px以下，显示2倍图；1000px以上，显示3倍图 -->
+        <picture>
+            <!-- 当图片在480px屏幕以上，使用800*800px -->
+            <source media="(min-width: 480px)" srcset="img/ad001-m.png" />
+            <!-- 当图片在800px屏幕以上，使用1600*1600px -->
+            <source media="(min-width: 800px)" srcset="img/ad001-l.png" />
+            <!-- 当图片为480px以下，使用480*480px -->
+            <img src="img/ad001.png" alt="2015xxxx" />
+        </picture>
+
+        <!-- <script src="js/vendor/jquery.min.js"></script>
+        <script>
+            // 在文档加载完毕之后触发方法
+            $(document).ready(function () {
+                function makeImageResponsive() {
+                    var width = $(window).width(); //获取浏览器的宽
+                    var img = $(".content img");
+                    if (width <= 480) {
+                        img.attr("src", "img/ad001.png");
+                    } else if (width <= 800) {
+                        img.attr("src", "img/ad001-m.png");
+                    } else {
+                        img.attr("src", "img/ad001-l.png");
+                    }
+                }
+                $(window).on("resize load", makeImageResponsive);
+            });
+        </script> -->
+    </body>
+</html>

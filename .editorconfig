@@ -1,0 +1,26 @@
+# 这个文件是一套用于统一代码工具解决方案的一个文件
+
+# 这个文件可以帮助开发者，在不同的编辑器、IDE之间定义/维护一致的代码风格。它告诉这些编辑器，如何格式化代码、代码的编码格式、缩进规则、换行规则等等...
+
+# 所有支持.editorconfig文件的编辑器/IDE，它们最后在保存文件的时候，都会应用.editorconfig里面的设置。这些设置规则，大部分IDE其实都原生的支持。很多IDE即使没有原生的支持，它们也可以通过插件来支持.editorconfig文件
+
+# editorconfig.org
+
+root = true 
+# 这是最顶层的配置文件，发现root = true的话，就不会接着在查找.editorconfig文件了。其他的文件都应用此规则
+
+# 通配符：表示下面的规则，应用于所有的文件
+[*]
+charset = utf-8 # 所有文件的编码格式统一都用utf-8编码格式
+indent_size = 4 # 每一级缩进，尺寸4个单位空格
+indent_style = space
+insert_final_newline = true # 每一个文件，以一个空白行结尾
+trim_trailing_whitespace = true # 会去除换行行首的任意空白字符
+
+# markdown文件的配置规则
+[*.md]
+trim_trailing_whitespace = false
+
+# 如若没有明确的指定某个属性，那么就会使用编辑器的配置；如果已经设置了一些项，那么对于编辑器来说，会优先使用.editorconfig的规则，来替换编辑器自己的规则，来进行代码的格式化
+
+# .editorconfig大小写不敏感，在编译会自动将它们转化为小写
